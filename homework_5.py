@@ -2,12 +2,18 @@ a = int(input())
 b = float(input())
 c = int(input())
 
-formatted_a = "+" + str(a).zfill(9)
-print(formatted_a)
+print(f"{a:0=+10}")
 
-formatted_b = "######" + "{:.2f}".format(b)
-print(formatted_b)
+# if b >= 0:
+#     print(f"{round(b, 2):#>10}")
+# else:
+#     print(f"{round(b, 2):#>9}")
 
-binary_representation = format(c, '016b')
-formatted_c = '_'.join([binary_representation[i:i+4] for i in range(0, len(binary_representation), 4)])
-print(c)
+if b >= 0:
+    print(f"{b:#>10.2f}")
+else:
+    print(f"{b:#>+10.2f}")
+
+res_current = format(c, '016b')[::-1]
+formatted_res = '_'.join([res_current[i:i+4] for i in range(0, len(res_current), 4)])[::-1]
+print(formatted_res)
